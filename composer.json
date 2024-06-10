@@ -1,0 +1,12 @@
+{
+  "name": "rehaan/phpiggy",
+  "description": "A PHP Application for tracking expenses",
+  "type": "project",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "framework\\": "src/framework",
+      "app\\": "src/app"
+    }
+  }
+}
