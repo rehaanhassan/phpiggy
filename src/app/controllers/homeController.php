@@ -7,11 +7,9 @@ use app\config\Paths;
 
 class HomeController
 {
-    private templateEngine $view;
 
-    public function __construct()
+    public function __construct(private templateEngine $view)
     {
-        $this->view = new templateEngine(Paths::VIEW);
     }
     public function home()
     {
