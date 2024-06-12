@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace framework;
 
-use ReflectionClass;
+use ReflectionClass, ReflectionNamedType;
 use framework\expections\containerException;
 
 class container
@@ -35,6 +35,34 @@ class container
             return new $className;
         }
 
-        dd($params);
+        $dependencies = [];
+
+        foreach ($params as $param) {
+            $name = $param->getName();
+            $type = $param->getType();
+
+            if (!$type) {
+                throw new containerException("Failed to resolve {$className} becasue param {$name} is missing type hint");
+            }
+
+            if (!$type instanceof ReflectionNamedType || $type->isBuiltin()) {
+                throw new containerException("Failed to resolve class {$className} because of invalid param name");
+            }
+
+            $dependencies[] = $this->get($type->getName());
+        }
+
+        return $reflectionClass->newInstanceArgs($dependencies);
+    }
+    public function get(string $id)
+    {
+        if (!array_key_exists($id, $this->definition)) {
+            throw new containerException("Class {$id} does not exist in container");
+        }
+
+        $factory = $this->definition[$id];
+        $dependency = $factory();
+
+        return $dependency;
     }
 }
