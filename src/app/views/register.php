@@ -19,8 +19,8 @@
             <span class="text-gray-700">Country</span>
             <select name="country" class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 <option value="USA">USA</option>
-                <option value="Canada" <?php echo $oldFormData['country'] === 'Canada' ? 'selected' : ''; ?>>Canada</option>
-                <option value="Mexico" <?php echo $oldFormData['country'] === 'Mexico' ? 'selected' : ''; ?>>Mexico</option>
+                <option value="Canada">Canada</option>
+                <option value="Mexico">Mexico</option>
                 <option value="Invalid">Invalid Country</option>
             </select>
         </label>
@@ -47,7 +47,7 @@
             <div class="mt-2">
                 <div>
                     <label class="inline-flex items-center">
-                        <input <?php echo $oldFormData['tos'] ?? false ? 'checked' : ''; ?> name="tos" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50" type="checkbox" />
+                        <input name="tos" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50" type="checkbox" />
                         <span class="ml-2">I accept the terms of service.</span>
                     </label>
                 </div>
